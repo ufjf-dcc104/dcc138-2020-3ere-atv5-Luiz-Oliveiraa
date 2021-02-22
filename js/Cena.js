@@ -6,6 +6,7 @@ export default class Cena {
         this.sprites = [];
         this.t0 = 0;
         this.dt = 0;
+        this.idAnim = null;
     }
     desenhar(){
         this.ctx.fillStyle = "grey";
@@ -16,7 +17,7 @@ export default class Cena {
         }
     }
     adicionar(sprite){
-        this.sprites.push(sprite);
+        this.sprites.push(sprite); 
     }
     passo(dt){
         for (const sprite of this.sprites) {
@@ -30,6 +31,17 @@ export default class Cena {
         this.passo(this.dt);
         this.desenhar();
 
+        this.iniciar();
         this.t0 = t;
+    }
+    iniciar(){
+        this.idAnim = requestAnimationFrame(
+            (t) => {this.quadro(t);}
+            );
+    }
+    parar(){
+        cancelAnimationFrame(this.idAnim);
+        this.t0 = null;
+        this.dt = 0;
     }
 }
