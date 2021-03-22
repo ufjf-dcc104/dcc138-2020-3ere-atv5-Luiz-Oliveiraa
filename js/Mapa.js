@@ -45,7 +45,7 @@ export default class Mapa{
     carregaMapa(modelo){
         this.LINHAS = modelo.length;
         this.COLUNAS = modelo[0]?.length ?? 0;
-        this.tiles = [];
+        this.tile = [];
         for (let l = 0; l < this.LINHAS; l++) {
             this.tiles [l] = [];
             for (let c = 0; c < this.COLUNAS; c++) {

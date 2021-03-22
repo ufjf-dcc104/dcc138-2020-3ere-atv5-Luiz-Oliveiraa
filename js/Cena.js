@@ -20,7 +20,8 @@ export default class Cena {
         if(this.assets.acabou()){
             for (let s = 0; s < this.sprites.length; s++) {
                 const sprite = this.sprites[s];
-                sprite.desenhar(this.ctx);            
+                sprite.desenhar(this.ctx);
+                sprite.aplicaRestricoes();            
             }
 
         }
