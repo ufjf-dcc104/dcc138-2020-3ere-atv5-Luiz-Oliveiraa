@@ -8,6 +8,7 @@ import AssetManager from "./AssetManager.js";
     assets.carregaImagem("esqueleto", "assets/skelly.png");
     assets.carregaImagem("orc", "assets/orc.png");
     assets.carregaAudio("moeda", "assets/coin.wav");
+    assets.carregaAudio("boom", "assets/boom.wav");
 
 
 const canvas = document.querySelector("canvas"); //Primeiro elemento da classe canvas
@@ -32,9 +33,12 @@ document.addEventListener("keydown", (e)=>{
         case "S":
             cena1.parar();
             break;
-            case "c":
-                assets.audio("moeda").play();
-                break;
+        case "c":
+            assets.audio("moeda").play();
+            break;
+        case "b":
+            assets.audio("boom").play();
+            break;
     
         default:
             break;
