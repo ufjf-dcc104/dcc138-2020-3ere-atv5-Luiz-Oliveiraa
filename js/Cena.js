@@ -25,7 +25,7 @@ export default class Cena {
             }
 
         }
-        this.ctx.fillStyle = "yellow";
+        this.ctx.fillStyle = "blue";
         this.ctx.fillText(this.assets?.progresso(), 10, 20)
     }
     adicionar(sprite){

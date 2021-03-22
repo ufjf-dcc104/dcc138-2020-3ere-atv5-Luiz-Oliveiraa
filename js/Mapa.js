@@ -16,27 +16,34 @@ export default class Mapa{
     }
 
     desenhar(ctx){
+        const fundo = new Image();
+        fundo.src = "../assets/base_out_atlas.png";
+        let coluna = 0;
+        let linha = 0;
+
         for (let l = 0; l < this.LINHAS; l++) {
             for (let c = 0; c < this.COLUNAS; c++) {
                 switch (this.tiles[l][c]){
                     case 1:
-                        ctx.fillStyle = "grey";
-                        ctx.lineWidth = 1;
-                        ctx.strokeStyle = "black";
+                        coluna = 0;
+                        linha = 25;
                         break;
-                        case 2:
-                            ctx.fillStyle = "orange";
-                            ctx.lineWidth = 2;
-                            ctx.strokeStyle = "red";
-                            break;
+                    case 2:
+                        coluna = 15;
+                        linha = 11;
+                        break;
                     default:
-                        ctx.fillStyle = "black";
-                        ctx.lineWidth = 1;
-                        ctx.strokeStyle = "grey";
+                        coluna = 24;
+                        linha = 5;
                         break;
                 }
-                ctx.fillRect(c*this.SIZE, l*this.SIZE, this.SIZE, this.SIZE);
-                ctx.strokeRect(c*this.SIZE, l*this.SIZE, this.SIZE, this.SIZE);
+
+                ctx.drawImage(fundo,
+                    // sx sy sw sh
+                    coluna*this.SIZE, linha*this.SIZE, this.SIZE, this.SIZE, //Posicao em que sera cortado
+                    // dx dy dw dh
+                    c*this.SIZE, l*this.SIZE, this.SIZE, this.SIZE //Posicao em que sera desenhado
+                    );
                 
             }
         }

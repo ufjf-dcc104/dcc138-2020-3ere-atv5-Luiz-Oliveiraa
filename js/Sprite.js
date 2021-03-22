@@ -66,7 +66,7 @@ export default class Sprite{
                     w: SIZE,
                     h: SIZE,
                 }
-                console.log(tile);
+                // console.log(tile);
                 this.cena.ctx.strokeStyle = "white";
                 this.cena.ctx.strokeRect(tile.x - SIZE/2,tile.y-SIZE/2, SIZE, SIZE);
                 if(this.colidiuCom(tile)){
@@ -87,7 +87,7 @@ export default class Sprite{
                     w: SIZE,
                     h: SIZE,
                 }
-                console.log(tile);
+                // console.log(tile);
                 this.cena.ctx.strokeStyle = "white";
                 this.cena.ctx.strokeRect(tile.x - SIZE/2,tile.y-SIZE/2, SIZE, SIZE);
                 if(this.colidiuCom(tile)){
@@ -108,7 +108,7 @@ export default class Sprite{
                     w: SIZE,
                     h: SIZE,
                 }
-                console.log(tile);
+                // console.log(tile);
                 this.cena.ctx.strokeStyle = "white";
                 this.cena.ctx.strokeRect(tile.x - SIZE/2,tile.y-SIZE/2, SIZE, SIZE);
                 if(this.colidiuCom(tile)){
@@ -129,7 +129,7 @@ export default class Sprite{
                     w: SIZE,
                     h: SIZE,
                 }
-                console.log(tile);
+                // console.log(tile);
                 this.cena.ctx.strokeStyle = "white";
                 this.cena.ctx.strokeRect(tile.x - SIZE/2,tile.y-SIZE/2, SIZE, SIZE);
                 if(this.colidiuCom(tile)){
