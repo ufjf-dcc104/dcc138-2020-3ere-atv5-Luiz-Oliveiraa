@@ -36,20 +36,29 @@ export default class Sprite{
             ||(this.x + this.w/2 < outro.x - outro.w/2)
             ||(this.y -this.h/2> outro.y + outro.h/2)
             ||(this.y + this.h/2 < outro.y - outro.h/2)
-        );
-    }
-    aplicaRestricoes(dt){
-        this.aplicaRestricoesDireita(dt);
-        this.aplicaRestricoesEsquerda(dt);
-        this.aplicaRestricoesBaixo(dt);
-        this.aplicaRestricoesCima(dt);
+            );
+        }
+        aplicaRestricoes(dt){
+        this.aplicaRestricoesDireita(this.mx+1, this.my-1);
+        this.aplicaRestricoesDireita(this.mx+1, this.my);
+        this.aplicaRestricoesDireita(this.mx+1, this.my+1);
+
+        this.aplicaRestricoesEsquerda(this.mx-1, this.my-1);
+        this.aplicaRestricoesEsquerda(this.mx-1, this.my);
+        this.aplicaRestricoesEsquerda(this.mx-1, this.my+1);
+
+        this.aplicaRestricoesBaixo(this.mx-1, this.my+1);
+        this.aplicaRestricoesBaixo(this.mx, this.my+1);
+        this.aplicaRestricoesBaixo(this.mx+1, this.my+1);
+
+        this.aplicaRestricoesCima(this.mx-1, this.my-1);
+        this.aplicaRestricoesCima(this.mx, this.my-1);
+        this.aplicaRestricoesCima(this.mx+1, this.my-1);
     }
 
-    aplicaRestricoesDireita(dt){
+    aplicaRestricoesDireita(pmx, pmy){
         if(this.vx>0){
             const SIZE = this.cena.mapa.SIZE;
-            const pmx = this.mx+1;
-            const pmy = this.my;
             if(this.cena.mapa.tiles[pmx][pmy] != 0){
                 const tile = {
                     x: pmx*SIZE + SIZE/2,
@@ -64,15 +73,13 @@ export default class Sprite{
                     this.vx = 0;
                     this.x = tile.x - tile.w/2 - this.w/2 - 1;
                 }
-            }   
+            }
         }
     }
 
-    aplicaRestricoesEsquerda(dt){
+    aplicaRestricoesEsquerda(pmx, pmy){
         if(this.vx<0){
             const SIZE = this.cena.mapa.SIZE;
-            const pmx = this.mx-1;
-            const pmy = this.my;
             if(this.cena.mapa.tiles[pmx][pmy] != 0){
                 const tile = {
                     x: pmx*SIZE + SIZE/2,
@@ -87,15 +94,13 @@ export default class Sprite{
                     this.vx = 0;
                     this.x = tile.x + tile.w/2 + this.w/2 + 1;
                 }
-            }   
+            }
         }
     }
 
-    aplicaRestricoesBaixo(dt){
+    aplicaRestricoesBaixo(pmx, pmy){
         if(this.vy>0){
             const SIZE = this.cena.mapa.SIZE;
-            const pmx = this.mx;
-            const pmy = this.my+1;
             if(this.cena.mapa.tiles[pmx][pmy] != 0){
                 const tile = {
                     x: pmx*SIZE + SIZE/2,
@@ -110,15 +115,13 @@ export default class Sprite{
                     this.vy = 0;
                     this.y = tile.y - tile.h/2 - this.h/2 - 1;
                 }
-            }   
+            }
         }
     }
 
-    aplicaRestricoesCima(dt){
+    aplicaRestricoesCima(pmx, pmy){
         if(this.vy<0){
             const SIZE = this.cena.mapa.SIZE;
-            const pmx = this.mx;
-            const pmy = this.my-1;
             if(this.cena.mapa.tiles[pmx][pmy] != 0){
                 const tile = {
                     x: pmx*SIZE + SIZE/2,
@@ -133,7 +136,7 @@ export default class Sprite{
                     this.y = 0;
                     this.y = tile.y + tile.h/2 + this.h/2 - 1;
                 }
-            }   
+            }
         }
     }
 }
