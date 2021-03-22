@@ -28,6 +28,7 @@ export default class Cena {
         this.ctx.fillText(this.assets?.progresso(), 10, 20)
     }
     adicionar(sprite){
+        sprite.cena = this;
         this.sprites.push(sprite); 
     }
     passo(dt){
