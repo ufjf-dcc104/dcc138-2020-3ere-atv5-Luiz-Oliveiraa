@@ -7,6 +7,7 @@ import AssetManager from "./AssetManager.js";
     assets.carregaImagem("garota", "assets/garota.png") ;
     assets.carregaImagem("esqueleto", "assets/skelly.png");
     assets.carregaImagem("orc", "assets/orc.png");
+    assets.carregaAudio("moeda", "assets/coin.wav");
 
 
 const canvas = document.querySelector("canvas"); //Primeiro elemento da classe canvas
