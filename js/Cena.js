@@ -10,6 +10,7 @@ export default class Cena {
         this.idAnim = null;
         this.assets = assets;
         this.mapa = null;
+        this.tempo = 0;
     }
     desenhar(){
         this.ctx.fillStyle = "lightblue";
@@ -43,6 +44,12 @@ export default class Cena {
     quadro(t){
         this.t0 = this.t0 ?? t;
         this.dt = (t - this.t0)/1000;
+        this.tempo += this.dt;
+        // console.log(this.tempo);
+
+        if(this.tempo>=4){
+            this.tempo = 0;
+        }
 
         this.passo(this.dt);
         this.desenhar();
