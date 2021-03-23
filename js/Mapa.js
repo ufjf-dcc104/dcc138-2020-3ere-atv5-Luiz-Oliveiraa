@@ -16,8 +16,10 @@ export default class Mapa{
     }
 
     desenhar(ctx){
-        const fundo = new Image();
-        fundo.src = "../assets/base_out_atlas.png";
+        var fundo = new Image();
+        // fundo.src = "../assets/base_out_atlas.png";
+        fundo = this.cena.assets.img("cenario");
+        // console.log(this.cena.assets.img("cenario"));
         let coluna = 0;
         let linha = 0;
 
