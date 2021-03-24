@@ -1,3 +1,5 @@
+import Sprite from "./Sprite.js";
+
 export default class Cena {
     /*Essa classe eh responsavel por desenhar elementos na tela em uma animação*/
     constructor(canvas, assets = null){
@@ -47,9 +49,77 @@ export default class Cena {
         this.tempo += this.dt;
         // console.log(this.tempo);
 
-        if(this.tempo>=4){
-            this.tempo = 0;
-        }
+        //Adicionado inimigo a cada 4s
+        // if(this.tempo>=4){
+        //     let hpos = 20;
+        //     let wpos = 20;
+
+        //     this.tempo = 0;
+        //     let linhaS = Math.round((Math.random()*this.canvas.height)/this.mapa?.SIZE); 
+        //     let colunaS = Math.round((Math.random()*this.canvas.width)/this.mapa?.SIZE);
+        //     let posicaoValida = false;
+
+        //     while (!posicaoValida) {
+        //         if(linhaS >= this.mapa.LINHAS){
+        //             linhaS = this.mapa.LINHAS-1;
+        //         }
+        //         if(colunaS >= this.mapa.COLUNAS){
+        //             colunaS = this.mapa.COLUNAS-1;
+        //         }
+
+        //         if(this.mapa.tiles[linhaS][colunaS] == 0){
+        //             let xpos = Math.round((colunaS * this.mapa.SIZE)+this.mapa.SIZE/2);
+        //             let ypos = Math.round((linhaS * this.mapa.SIZE)+this.mapa.SIZE/2);
+        //             let direcao;
+
+        //             let vxS = Math.round((Math.random()*11));
+        //             let vyS = Math.round((Math.random()*11));
+        //             direcao = Math.round((Math.random()*3 +1));
+
+        //             // console.log("AQUI1-----------");
+        //             // console.log("VX: "+vxS);
+        //             // console.log("VY: "+vyS);
+
+        //             if(direcao>=2){
+        //                 direcao = 1;
+        //             }else{
+        //                 direcao = -1;
+        //             }
+        //             vxS *=direcao;
+        //             if(direcao>=2){
+        //                 direcao = 1;
+        //             }else{
+        //                 direcao = -1;
+        //             }
+        //             vyS *=direcao;
+
+        //             // console.log("VX: "+vxS);
+        //             // console.log("VY: "+vyS);
+        //             // console.log("AQUI2-----------");
+
+        //             let spr = new Sprite({x:xpos, y:ypos, vx:vxS, vy:vyS, color:"red"});
+        //             let colidiu = false;
+
+        //             for (let a = 0; a < this.sprites.length-1; a++){
+        //                 if(spr.colidiuCom(this.sprites[a])){
+        //                     colidiu = true;
+        //                     break;
+        //                 }
+        //             }
+
+        //             if(!colidiu){
+        //                 this.adicionar(spr);
+        //                 posicaoValida = true;
+        //             }else{
+        //                 linhaS = Math.round((Math.random()*this.canvas.height)/this.mapa?.SIZE); 
+        //                 colunaS = Math.round((Math.random()*this.canvas.width)/this.mapa?.SIZE);
+        //             }
+        //         }else{
+        //             linhaS = Math.round((Math.random()*this.canvas.height)/this.mapa?.SIZE); 
+        //             colunaS = Math.round((Math.random()*this.canvas.width)/this.mapa?.SIZE); 
+        //         }
+        //     }
+        // }
 
         this.passo(this.dt);
         this.desenhar();
@@ -81,6 +151,7 @@ export default class Cena {
         }
     }
     quandoColidir(a,b){
+        this.assets.play("boom");
         if(!this.aRemover.includes(a)){
             this.aRemover.push(a);
         }

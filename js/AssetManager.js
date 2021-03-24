@@ -52,7 +52,7 @@ export default class AssetManager{
     }
     
     play(chave){
-        this.mixer?.play(this.audio(chave));
+        this.mixer.play(this.audio(chave));
     }
 
 }
