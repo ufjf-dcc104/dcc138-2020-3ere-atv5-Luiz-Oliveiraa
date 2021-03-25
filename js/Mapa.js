@@ -62,5 +62,16 @@ export default class Mapa{
                 
             }
         }
+        // this.imprimeMapa();
+    }
+
+    imprimeMapa(){
+        for (let l = 0; l < this.LINHAS; l++) {
+            console.log("LINHA "+l)
+            for (let c = 0; c < this.COLUNAS; c++) {
+                console.log(this.tiles[l][c]);
+                
+            }
+        }
     }
 }
