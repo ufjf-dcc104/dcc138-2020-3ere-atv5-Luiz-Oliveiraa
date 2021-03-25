@@ -47,79 +47,72 @@ export default class Cena {
         this.t0 = this.t0 ?? t;
         this.dt = (t - this.t0)/1000;
         this.tempo += this.dt;
-        // console.log(this.tempo);
 
-        //Adicionado inimigo a cada 4s
-        // if(this.tempo>=4){
-        //     let hpos = 20;
-        //     let wpos = 20;
+        if(this.tempo>=4){
 
-        //     this.tempo = 0;
-        //     let linhaS = Math.round((Math.random()*this.canvas.height)/this.mapa?.SIZE); 
-        //     let colunaS = Math.round((Math.random()*this.canvas.width)/this.mapa?.SIZE);
-        //     let posicaoValida = false;
+            let hpos = 20;
+            let wpos = 20;
 
-        //     while (!posicaoValida) {
-        //         if(linhaS >= this.mapa.LINHAS){
-        //             linhaS = this.mapa.LINHAS-1;
-        //         }
-        //         if(colunaS >= this.mapa.COLUNAS){
-        //             colunaS = this.mapa.COLUNAS-1;
-        //         }
+            this.tempo = 0;
+            let linhaS = Math.round((Math.random()*this.canvas.height)/this.mapa?.SIZE); 
+            let colunaS = Math.round((Math.random()*this.canvas.width)/this.mapa?.SIZE);
+            let posicaoValida = false;
 
-        //         if(this.mapa.tiles[linhaS][colunaS] == 0){
-        //             let xpos = Math.round((colunaS * this.mapa.SIZE)+this.mapa.SIZE/2);
-        //             let ypos = Math.round((linhaS * this.mapa.SIZE)+this.mapa.SIZE/2);
-        //             let direcao;
+            while (!posicaoValida) {
 
-        //             let vxS = Math.round((Math.random()*11));
-        //             let vyS = Math.round((Math.random()*11));
-        //             direcao = Math.round((Math.random()*3 +1));
+                if(linhaS >= this.mapa.LINHAS){
+                    linhaS = (this.mapa.LINHAS-1);
+                }
+                if(colunaS >= this.mapa.COLUNAS){
+                    colunaS = (this.mapa.COLUNAS-1);
+                }
 
-        //             // console.log("AQUI1-----------");
-        //             // console.log("VX: "+vxS);
-        //             // console.log("VY: "+vyS);
+                if(this.mapa.tiles[linhaS][colunaS] == 0){
+                    let xpos = Math.round((colunaS * this.mapa.SIZE)+this.mapa.SIZE/2);
+                    let ypos = Math.round((linhaS * this.mapa.SIZE)+this.mapa.SIZE/2);
+                    let direcao;
 
-        //             if(direcao>=2){
-        //                 direcao = 1;
-        //             }else{
-        //                 direcao = -1;
-        //             }
-        //             vxS *=direcao;
-        //             if(direcao>=2){
-        //                 direcao = 1;
-        //             }else{
-        //                 direcao = -1;
-        //             }
-        //             vyS *=direcao;
+                    let vxS = Math.round((Math.random()*11));
+                    let vyS = Math.round((Math.random()*11));
+                    direcao = Math.round((Math.random()*3 +1));
 
-        //             // console.log("VX: "+vxS);
-        //             // console.log("VY: "+vyS);
-        //             // console.log("AQUI2-----------");
+                    if(direcao>=2){
+                        direcao = 1;
+                    }else{
+                        direcao = -1;
+                    }
+                    vxS *=direcao;
+                    if(direcao>=2){
+                        direcao = 1;
+                    }else{
+                        direcao = -1;
+                    }
+                    vyS *=direcao;
 
-        //             let spr = new Sprite({x:xpos, y:ypos, vx:vxS, vy:vyS, color:"red"});
-        //             let colidiu = false;
+                    let spr = new Sprite({x:xpos, y:ypos, vx:vxS, vy:vyS, color:"red"});
+                    let colidiu = false;
 
-        //             for (let a = 0; a < this.sprites.length-1; a++){
-        //                 if(spr.colidiuCom(this.sprites[a])){
-        //                     colidiu = true;
-        //                     break;
-        //                 }
-        //             }
+                    for (let a = 0; a < this.sprites.length-1; a++){
+                        if(spr.colidiuCom(this.sprites[a])){
+                            colidiu = true;
+                            break;
+                        }
+                    }
 
-        //             if(!colidiu){
-        //                 this.adicionar(spr);
-        //                 posicaoValida = true;
-        //             }else{
-        //                 linhaS = Math.round((Math.random()*this.canvas.height)/this.mapa?.SIZE); 
-        //                 colunaS = Math.round((Math.random()*this.canvas.width)/this.mapa?.SIZE);
-        //             }
-        //         }else{
-        //             linhaS = Math.round((Math.random()*this.canvas.height)/this.mapa?.SIZE); 
-        //             colunaS = Math.round((Math.random()*this.canvas.width)/this.mapa?.SIZE); 
-        //         }
-        //     }
-        // }
+                    if(!colidiu){
+                        this.adicionar(spr);
+                        posicaoValida = true;
+                    }else{
+                        linhaS = Math.round((Math.random()*this.canvas.height)/this.mapa?.SIZE); 
+                        colunaS = Math.round((Math.random()*this.canvas.width)/this.mapa?.SIZE);
+                    }
+                }else{
+                    linhaS = Math.round((Math.random()*this.canvas.height)/this.mapa?.SIZE); 
+                    colunaS = Math.round((Math.random()*this.canvas.width)/this.mapa?.SIZE); 
+                }
+            }
+        }
+
 
         this.passo(this.dt);
         this.desenhar();
